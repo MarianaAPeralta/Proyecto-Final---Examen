@@ -12,7 +12,8 @@ import javax.swing.ImageIcon;
  */
 public class LoginExa extends javax.swing.JFrame {
 
-    String user="Mariana", password="123";
+    String Admin="Admin", password1="123", Cajero="Cajero", password2="123", Bodega="Bodega", password3="123";
+    int estado=0;
     Icon EntrarAlter = new ImageIcon("C:\\Users\\marij\\OneDrive\\Documentos\\NetBeansProjects\\LoginExam\\Iconos\\EntrarAlter.png");
     Icon Entrar = new ImageIcon("C:\\Users\\marij\\OneDrive\\Documentos\\NetBeansProjects\\LoginExam\\Iconos\\Entrar.png");
 
@@ -100,12 +101,29 @@ public class LoginExa extends javax.swing.JFrame {
         MenuExa ventanaMenu= new MenuExa();
         //LbEntrar.setIcon(entrarAlter);
         
-        if(TfUser.getText().equals(user) && TfPassword.getText().equals(password)){
+        if(TfUser.getText().equals(Admin) && TfPassword.getText().equals(password1)){
             LbEnter.setIcon(EntrarAlter);
             LbAviso.setText("Entrando..");
             ventanaMenu.setVisible(true);
             ventanaMenu.setLocationRelativeTo(null);
             this.setVisible(false);
+            estado=1;
+        }
+        if(TfUser.getText().equals(Cajero) && TfPassword.getText().equals(password2)){
+            LbEnter.setIcon(EntrarAlter);
+            LbAviso.setText("Entrando..");
+            ventanaMenu.setVisible(true);
+            ventanaMenu.setLocationRelativeTo(null);
+            this.setVisible(false);
+            estado=2;
+        }
+        if(TfUser.getText().equals(Bodega) && TfPassword.getText().equals(password3)){
+            LbEnter.setIcon(EntrarAlter);
+            LbAviso.setText("Entrando..");
+            ventanaMenu.setVisible(true);
+            ventanaMenu.setLocationRelativeTo(null);
+            this.setVisible(false);
+            estado=3;
         }
         else{
             TfUser.setText("");
