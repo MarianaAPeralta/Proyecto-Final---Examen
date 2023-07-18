@@ -31,6 +31,9 @@ public class MenuExa extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         MRegProd = new javax.swing.JMenu();
         MActInv = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        MenuMasUser = new javax.swing.JMenu();
+        MenuMenosUser = new javax.swing.JMenu();
         MVenProd = new javax.swing.JMenu();
         MSalir = new javax.swing.JMenu();
 
@@ -41,9 +44,9 @@ public class MenuExa extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoMenu.png"))); // NOI18N
         jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 340));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 390));
 
-        MRegProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Añadir.png"))); // NOI18N
+        MRegProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Añadir2.png"))); // NOI18N
         MRegProd.setText("Registro de Producto");
         MRegProd.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -52,8 +55,8 @@ public class MenuExa extends javax.swing.JFrame {
         });
         jMenuBar1.add(MRegProd);
 
-        MActInv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Reload.png"))); // NOI18N
-        MActInv.setText("Actualizacion de Inventario");
+        MActInv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Reload2.png"))); // NOI18N
+        MActInv.setText("Actualizacion de Inventario   ");
         MActInv.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 MActInvMouseClicked(evt);
@@ -61,8 +64,29 @@ public class MenuExa extends javax.swing.JFrame {
         });
         jMenuBar1.add(MActInv);
 
-        MVenProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Venta.png"))); // NOI18N
-        MVenProd.setText("Ventas de Productos");
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/User2.png"))); // NOI18N
+        jMenu2.setText("Administrar Usuarios   ");
+
+        MenuMasUser.setText("Añadir Usuario");
+        MenuMasUser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MenuMasUserMouseClicked(evt);
+            }
+        });
+        jMenu2.add(MenuMasUser);
+
+        MenuMenosUser.setText("Eliminar Usuario");
+        MenuMenosUser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MenuMenosUserMouseClicked(evt);
+            }
+        });
+        jMenu2.add(MenuMenosUser);
+
+        jMenuBar1.add(jMenu2);
+
+        MVenProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Venta2.png"))); // NOI18N
+        MVenProd.setText("Ventas de Productos   ");
         MVenProd.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 MVenProdMouseClicked(evt);
@@ -70,6 +94,7 @@ public class MenuExa extends javax.swing.JFrame {
         });
         jMenuBar1.add(MVenProd);
 
+        MSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
         MSalir.setText("Salir");
         MSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -107,6 +132,20 @@ public class MenuExa extends javax.swing.JFrame {
         VentanaActInv.setLocationRelativeTo(null);
         this.setVisible(false);
     }//GEN-LAST:event_MActInvMouseClicked
+
+    private void MenuMasUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuMasUserMouseClicked
+        MasUser VentanaMasUser= new MasUser();
+        VentanaMasUser.setVisible(true);
+        VentanaMasUser.setLocationRelativeTo(null);
+        this.setVisible(false);
+    }//GEN-LAST:event_MenuMasUserMouseClicked
+
+    private void MenuMenosUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuMenosUserMouseClicked
+        MenosUser VentanaMenosUser= new MenosUser();
+        VentanaMenosUser.setVisible(true);
+        VentanaMenosUser.setLocationRelativeTo(null);
+        this.setVisible(false);
+    }//GEN-LAST:event_MenuMenosUserMouseClicked
 
     /**
      * @param args the command line arguments
@@ -148,7 +187,10 @@ public class MenuExa extends javax.swing.JFrame {
     private javax.swing.JMenu MRegProd;
     private javax.swing.JMenu MSalir;
     private javax.swing.JMenu MVenProd;
+    private javax.swing.JMenu MenuMasUser;
+    private javax.swing.JMenu MenuMenosUser;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     // End of variables declaration//GEN-END:variables

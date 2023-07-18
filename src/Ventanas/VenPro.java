@@ -29,8 +29,8 @@ public class VenPro extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         BtnOk = new javax.swing.JButton();
         LbAviso = new javax.swing.JLabel();
-        TfIdProd = new javax.swing.JTextField();
-        LbIdPro = new javax.swing.JLabel();
+        TfIdFact = new javax.swing.JTextField();
+        LbIdFact = new javax.swing.JLabel();
         TfNombre = new javax.swing.JTextField();
         LbNomPro1 = new javax.swing.JLabel();
         LbPresProd = new javax.swing.JLabel();
@@ -41,6 +41,8 @@ public class VenPro extends javax.swing.JFrame {
         LbPrecTot = new javax.swing.JLabel();
         LbCant1 = new javax.swing.JLabel();
         TfCant1 = new javax.swing.JTextField();
+        TfIdProd1 = new javax.swing.JTextField();
+        LbIdPro1 = new javax.swing.JLabel();
         LbFondo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         Mregresar = new javax.swing.JMenu();
@@ -61,15 +63,15 @@ public class VenPro extends javax.swing.JFrame {
         LbAviso.setText("El producto no esta registrado.");
         getContentPane().add(LbAviso, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, -1, -1));
 
-        TfIdProd.addActionListener(new java.awt.event.ActionListener() {
+        TfIdFact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TfIdProdActionPerformed(evt);
+                TfIdFactActionPerformed(evt);
             }
         });
-        getContentPane().add(TfIdProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 390, -1));
+        getContentPane().add(TfIdFact, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 390, -1));
 
-        LbIdPro.setText("Id del producto:");
-        getContentPane().add(LbIdPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
+        LbIdFact.setText("Numero de la factura:");
+        getContentPane().add(LbIdFact, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
 
         TfNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,10 +86,10 @@ public class VenPro extends javax.swing.JFrame {
         LbPresProd.setText("Presentacion del producto:");
         getContentPane().add(LbPresProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
         getContentPane().add(TfPresProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 400, -1));
-        getContentPane().add(TfCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 250, -1));
+        getContentPane().add(TfCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 250, -1));
 
         LbCant.setText("Cantidad a comprar:");
-        getContentPane().add(LbCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
+        getContentPane().add(LbCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
         getContentPane().add(TfPrecTot, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 260, 170, 20));
 
         LbPrecTot.setText("Total a pagar:");
@@ -96,6 +98,16 @@ public class VenPro extends javax.swing.JFrame {
         LbCant1.setText("Cantidad del producto:");
         getContentPane().add(LbCant1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
         getContentPane().add(TfCant1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, 400, -1));
+
+        TfIdProd1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TfIdProd1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(TfIdProd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 390, 20));
+
+        LbIdPro1.setText("Id del producto:");
+        getContentPane().add(LbIdPro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, 20));
 
         LbFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoMenu.png"))); // NOI18N
         LbFondo.setText("jLabel1");
@@ -121,9 +133,9 @@ public class VenPro extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_MregresarMouseClicked
 
-    private void TfIdProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TfIdProdActionPerformed
+    private void TfIdFactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TfIdFactActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TfIdProdActionPerformed
+    }//GEN-LAST:event_TfIdFactActionPerformed
 
     private void TfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TfNombreActionPerformed
         // TODO add your handling code here:
@@ -132,6 +144,10 @@ public class VenPro extends javax.swing.JFrame {
     private void BtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnOkActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnOkActionPerformed
+
+    private void TfIdProd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TfIdProd1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TfIdProd1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,14 +190,16 @@ public class VenPro extends javax.swing.JFrame {
     private javax.swing.JLabel LbCant;
     private javax.swing.JLabel LbCant1;
     private javax.swing.JLabel LbFondo;
-    private javax.swing.JLabel LbIdPro;
+    private javax.swing.JLabel LbIdFact;
+    private javax.swing.JLabel LbIdPro1;
     private javax.swing.JLabel LbNomPro1;
     private javax.swing.JLabel LbPrecTot;
     private javax.swing.JLabel LbPresProd;
     private javax.swing.JMenu Mregresar;
     private javax.swing.JTextField TfCant;
     private javax.swing.JTextField TfCant1;
-    private javax.swing.JTextField TfIdProd;
+    private javax.swing.JTextField TfIdFact;
+    private javax.swing.JTextField TfIdProd1;
     private javax.swing.JTextField TfNombre;
     private javax.swing.JTextField TfPrecTot;
     private javax.swing.JTextField TfPresProd;

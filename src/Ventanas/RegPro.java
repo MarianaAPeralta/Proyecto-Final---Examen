@@ -36,6 +36,8 @@ public class RegPro extends javax.swing.JFrame {
         TfNombre = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         TfPresProd = new javax.swing.JTextField();
+        LbIdPro1 = new javax.swing.JLabel();
+        TfIdProd1 = new javax.swing.JTextField();
         LbFondo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         Mregresa = new javax.swing.JMenu();
@@ -47,16 +49,16 @@ public class RegPro extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         LbMarcaPro.setText("Marca del producto:");
-        getContentPane().add(LbMarcaPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
+        getContentPane().add(LbMarcaPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
 
         LbNomPro.setText("Nombre del producto:");
-        getContentPane().add(LbNomPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
+        getContentPane().add(LbNomPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
 
         LbPresProd.setText("Presentacion del producto:");
-        getContentPane().add(LbPresProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
+        getContentPane().add(LbPresProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
 
         LbPrecio.setText("Precio del producto:");
-        getContentPane().add(LbPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, -1));
+        getContentPane().add(LbPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, -1, -1));
 
         BtnOk.setText("Aceptar");
         BtnOk.addActionListener(new java.awt.event.ActionListener() {
@@ -64,17 +66,27 @@ public class RegPro extends javax.swing.JFrame {
                 BtnOkActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 290, -1, -1));
-        getContentPane().add(TfPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 410, -1));
+        getContentPane().add(BtnOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 300, -1, -1));
+        getContentPane().add(TfPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 410, -1));
 
         TfNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TfNombreActionPerformed(evt);
             }
         });
-        getContentPane().add(TfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 410, -1));
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 410, -1));
-        getContentPane().add(TfPresProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 410, -1));
+        getContentPane().add(TfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 410, -1));
+        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 410, -1));
+        getContentPane().add(TfPresProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 410, -1));
+
+        LbIdPro1.setText("Id del producto:");
+        getContentPane().add(LbIdPro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, 20));
+
+        TfIdProd1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TfIdProd1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(TfIdProd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 410, 20));
 
         LbFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoMenu.png"))); // NOI18N
         LbFondo.setText("jLabel1");
@@ -107,6 +119,10 @@ public class RegPro extends javax.swing.JFrame {
     private void BtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnOkActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnOkActionPerformed
+
+    private void TfIdProd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TfIdProd1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TfIdProd1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,11 +162,13 @@ public class RegPro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnOk;
     private javax.swing.JLabel LbFondo;
+    private javax.swing.JLabel LbIdPro1;
     private javax.swing.JLabel LbMarcaPro;
     private javax.swing.JLabel LbNomPro;
     private javax.swing.JLabel LbPrecio;
     private javax.swing.JLabel LbPresProd;
     private javax.swing.JMenu Mregresa;
+    private javax.swing.JTextField TfIdProd1;
     private javax.swing.JTextField TfNombre;
     private javax.swing.JTextField TfPrecio;
     private javax.swing.JTextField TfPresProd;
