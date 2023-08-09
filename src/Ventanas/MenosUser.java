@@ -4,15 +4,20 @@
  */
 package Ventanas;
 
+import com.devazt.networking.HttpClient;
+import com.devazt.networking.OnHttpRequestComplete;
+import com.devazt.networking.Response;
+import javax.swing.JOptionPane;
+import org.json.JSONException;
+import org.json.JSONObject;
 /**
  *
  * @author marij
  */
 public class MenosUser extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MenosUser
-     */
+    int estado;
+    
     public MenosUser() {
         initComponents();
     }
@@ -27,12 +32,12 @@ public class MenosUser extends javax.swing.JFrame {
     private void initComponents() {
 
         LbId = new javax.swing.JLabel();
-        BtnOk = new javax.swing.JButton();
         TfId = new javax.swing.JTextField();
         LbNombre = new javax.swing.JLabel();
         LbNivel = new javax.swing.JLabel();
         LbNomEli = new javax.swing.JLabel();
         LbNivelEli = new javax.swing.JLabel();
+        BtnBuscar = new javax.swing.JButton();
         LbMenu = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         BtnRegresar = new javax.swing.JMenu();
@@ -40,29 +45,29 @@ public class MenosUser extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        LbId.setText("Id del usuario a Eliminar");
-        getContentPane().add(LbId, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, -1));
-
-        BtnOk.setText("Eliminar");
-        BtnOk.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnOkActionPerformed(evt);
-            }
-        });
-        getContentPane().add(BtnOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 210, -1, -1));
-        getContentPane().add(TfId, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 240, -1));
+        LbId.setText("Id del usuario a buscar");
+        getContentPane().add(LbId, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, -1, -1));
+        getContentPane().add(TfId, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 240, -1));
 
         LbNombre.setText("Nombre del usuario:");
-        getContentPane().add(LbNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, -1));
+        getContentPane().add(LbNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, -1, -1));
 
         LbNivel.setText("Nivel del usuario:");
-        getContentPane().add(LbNivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, -1));
+        getContentPane().add(LbNivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, -1, -1));
 
         LbNomEli.setText("                      ");
-        getContentPane().add(LbNomEli, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 260, -1));
+        getContentPane().add(LbNomEli, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 260, -1));
 
         LbNivelEli.setText("                                                  ");
-        getContentPane().add(LbNivelEli, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, -1, -1));
+        getContentPane().add(LbNivelEli, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, -1, -1));
+
+        BtnBuscar.setText("Buscar usuario");
+        BtnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBuscarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BtnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, -1, -1));
 
         LbMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoMenu.png"))); // NOI18N
         getContentPane().add(LbMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 570, 280));
@@ -80,16 +85,48 @@ public class MenosUser extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnOkActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnOkActionPerformed
-
     private void BtnRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnRegresarMouseClicked
         MenuExa ventanaMenu= new MenuExa();
+        ventanaMenu.estado=this.estado;
+        if(estado == 1){
+            ventanaMenu.nivel1();
+        }
+        else if (estado == 2){
+            ventanaMenu.nivel2();
+        }
+        else if (estado ==3 ){
+            ventanaMenu.nivel3();
+        }
         ventanaMenu.setVisible(true);
         ventanaMenu.setLocationRelativeTo(null);
         this.setVisible(false);
     }//GEN-LAST:event_BtnRegresarMouseClicked
+
+    private void BtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarActionPerformed
+        HttpClient cliente = new HttpClient(new OnHttpRequestComplete() {
+            @Override
+            public void onComplete(Response status) {
+
+                try {
+                    JSONObject producto = new JSONObject(status.getResult());
+                    String NameUserEli = producto.getJSONObject("0").get("NameUser").toString();
+                    String NivelEli = producto.getJSONObject("0").get("estado").toString();
+                    if (NameUserEli != null && NivelEli != null) {
+                        LbNomEli.setText(NameUserEli);
+                        LbNivelEli.setText(NivelEli);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "El usuario que desea eliminar no existe. ");
+                    }
+
+                } catch (Exception e) {
+                }
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+
+        String IdUser = TfId.getText().toString();
+        cliente.excecute("http://localhost/Api/Exa_MenosUser_Buscar.php?Id_User=" + IdUser + "");
+    }//GEN-LAST:event_BtnBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,7 +164,7 @@ public class MenosUser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnOk;
+    private javax.swing.JButton BtnBuscar;
     private javax.swing.JMenu BtnRegresar;
     private javax.swing.JLabel LbId;
     private javax.swing.JLabel LbMenu;

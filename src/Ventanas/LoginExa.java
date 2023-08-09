@@ -4,16 +4,22 @@
  */
 package Ventanas;
 
+import com.devazt.networking.HttpClient;
+import com.devazt.networking.OnHttpRequestComplete;
+import com.devazt.networking.Response;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import org.json.JSONException;
+import org.json.JSONObject;
 /**
  *
  * @author marij
  */
 public class LoginExa extends javax.swing.JFrame {
 
-    String Admin="Admin", password1="123", Cajero="Cajero", password2="123", Bodega="Bodega", password3="123";
-    int estado=0;
+    String NameUser, Contraseña, estado;
+    boolean SiEntrar=false;
     Icon EntrarAlter = new ImageIcon("C:\\Users\\marij\\OneDrive\\Documentos\\NetBeansProjects\\LoginExam\\Iconos\\EntrarAlter.png");
     Icon Entrar = new ImageIcon("C:\\Users\\marij\\OneDrive\\Documentos\\NetBeansProjects\\LoginExam\\Iconos\\Entrar.png");
 
@@ -98,38 +104,59 @@ public class LoginExa extends javax.swing.JFrame {
     }//GEN-LAST:event_TfPasswordActionPerformed
 
     private void LbEnterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LbEnterMouseClicked
-        MenuExa ventanaMenu= new MenuExa();
-        //LbEntrar.setIcon(entrarAlter);
+        HttpClient Cliente = new HttpClient(new OnHttpRequestComplete() {
+            @Override
+            public void onComplete(Response status) {
+                if(status.isSuccess())
+                {
+                    try{
+                        JSONObject Usuarios = new JSONObject(status.getResult());
+                        String UserWeb=Usuarios.getJSONObject("0").get("NameUser").toString();
+                        String ContraseñaWeb=Usuarios.getJSONObject("0").get("Contraseña").toString();
+                        if(TfUser.getText().toString().equals(UserWeb) &&
+                                TfPassword.getText().toString().equals(ContraseñaWeb)){
+                            estado=Usuarios.getJSONObject("0").get("estado").toString();
+                            LbAviso.setText("Entrando..");   
+                            SiEntrar=true;
+                        }
+                    }
+                        catch(JSONException e){
+                    }
+                    
+                }
+                    //La linea de throw de abajo causaba error por razones desconocidas(me costo 3 dias darme cuenta)
+                    //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+        NameUser=TfUser.getText().toString();
+        Contraseña=TfPassword.getText().toString();
         
-        if(TfUser.getText().equals(Admin) && TfPassword.getText().equals(password1)){
-            LbEnter.setIcon(EntrarAlter);
+        Cliente.excecute("http://localhost/Api/login.php?NameUser="+ NameUser+"&Contraseña="+Contraseña+"");
+        
+        if (SiEntrar==true){
+            MenuExa ventanaMenu= new MenuExa();
+            //LbEntrar.setIcon(entrarAlter);
             LbAviso.setText("Entrando..");
+            ventanaMenu.estado= Integer.parseInt(this.estado);
             ventanaMenu.setVisible(true);
             ventanaMenu.setLocationRelativeTo(null);
             this.setVisible(false);
-            estado=1;
+           
+            if(estado.equals("1")){
+                ventanaMenu.nivel1();
+            }
+            else if(estado.equals("2")){
+                ventanaMenu.nivel2();
+            }
+            else if(estado.equals("3")){
+                ventanaMenu.nivel3();
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Usuario no encontrado");
+            }
         }
-        if(TfUser.getText().equals(Cajero) && TfPassword.getText().equals(password2)){
-            LbEnter.setIcon(EntrarAlter);
-            LbAviso.setText("Entrando..");
-            ventanaMenu.setVisible(true);
-            ventanaMenu.setLocationRelativeTo(null);
-            this.setVisible(false);
-            estado=2;
-        }
-        if(TfUser.getText().equals(Bodega) && TfPassword.getText().equals(password3)){
-            LbEnter.setIcon(EntrarAlter);
-            LbAviso.setText("Entrando..");
-            ventanaMenu.setVisible(true);
-            ventanaMenu.setLocationRelativeTo(null);
-            this.setVisible(false);
-            estado=3;
-        }
-        else{
-            TfUser.setText("");
-            TfPassword.setText("");
-            LbEnter.setIcon(Entrar);
-        }
+        
+        
     }//GEN-LAST:event_LbEnterMouseClicked
 
     private void LbEnterMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LbEnterMousePressed

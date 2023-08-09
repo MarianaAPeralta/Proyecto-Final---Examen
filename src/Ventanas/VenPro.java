@@ -4,15 +4,20 @@
  */
 package Ventanas;
 
+import com.devazt.networking.HttpClient;
+import com.devazt.networking.OnHttpRequestComplete;
+import com.devazt.networking.Response;
+import javax.swing.JOptionPane;
+import org.json.JSONException;
+import org.json.JSONObject;
 /**
  *
  * @author marij
  */
 public class VenPro extends javax.swing.JFrame {
 
-    /**
-     * Creates new form VenPro
-     */
+    int estado;
+    
     public VenPro() {
         initComponents();
     }
@@ -28,21 +33,21 @@ public class VenPro extends javax.swing.JFrame {
 
         jMenu1 = new javax.swing.JMenu();
         BtnOk = new javax.swing.JButton();
-        LbAviso = new javax.swing.JLabel();
         TfIdFact = new javax.swing.JTextField();
         LbIdFact = new javax.swing.JLabel();
-        TfNombre = new javax.swing.JTextField();
-        LbNomPro1 = new javax.swing.JLabel();
+        LbNomPro = new javax.swing.JLabel();
         LbPresProd = new javax.swing.JLabel();
-        TfPresProd = new javax.swing.JTextField();
         TfCant = new javax.swing.JTextField();
         LbCant = new javax.swing.JLabel();
-        TfPrecTot = new javax.swing.JTextField();
         LbPrecTot = new javax.swing.JLabel();
         LbCant1 = new javax.swing.JLabel();
-        TfCant1 = new javax.swing.JTextField();
         TfIdProd1 = new javax.swing.JTextField();
         LbIdPro1 = new javax.swing.JLabel();
+        BtnBuscar = new javax.swing.JButton();
+        LbPrecTot2 = new javax.swing.JLabel();
+        LbNomPro2 = new javax.swing.JLabel();
+        LbCan12 = new javax.swing.JLabel();
+        LbPresPro2 = new javax.swing.JLabel();
         LbFondo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         Mregresar = new javax.swing.JMenu();
@@ -58,60 +63,67 @@ public class VenPro extends javax.swing.JFrame {
                 BtnOkActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 290, -1, -1));
-
-        LbAviso.setText("El producto no esta registrado.");
-        getContentPane().add(LbAviso, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, -1, -1));
+        getContentPane().add(BtnOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 260, -1, -1));
 
         TfIdFact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TfIdFactActionPerformed(evt);
             }
         });
-        getContentPane().add(TfIdFact, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 390, -1));
+        getContentPane().add(TfIdFact, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, 160, -1));
 
         LbIdFact.setText("Numero de la factura:");
-        getContentPane().add(LbIdFact, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
+        getContentPane().add(LbIdFact, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, -1, -1));
 
-        TfNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TfNombreActionPerformed(evt);
-            }
-        });
-        getContentPane().add(TfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 400, -1));
-
-        LbNomPro1.setText("Nombre del producto:");
-        getContentPane().add(LbNomPro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, -1));
+        LbNomPro.setText("Nombre del producto:");
+        getContentPane().add(LbNomPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, -1, -1));
 
         LbPresProd.setText("Presentacion del producto:");
-        getContentPane().add(LbPresProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
-        getContentPane().add(TfPresProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 400, -1));
-        getContentPane().add(TfCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 250, -1));
+        getContentPane().add(LbPresProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, -1));
+        getContentPane().add(TfCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 130, -1));
 
         LbCant.setText("Cantidad a comprar:");
-        getContentPane().add(LbCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
-        getContentPane().add(TfPrecTot, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 260, 170, 20));
+        getContentPane().add(LbCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, -1));
 
         LbPrecTot.setText("Total a pagar:");
-        getContentPane().add(LbPrecTot, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, -1, 20));
+        getContentPane().add(LbPrecTot, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, -1, 20));
 
-        LbCant1.setText("Cantidad del producto:");
-        getContentPane().add(LbCant1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
-        getContentPane().add(TfCant1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, 400, -1));
+        LbCant1.setText("Cantidad actual del producto:");
+        getContentPane().add(LbCant1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
 
         TfIdProd1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TfIdProd1ActionPerformed(evt);
             }
         });
-        getContentPane().add(TfIdProd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 390, 20));
+        getContentPane().add(TfIdProd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, 250, -1));
 
         LbIdPro1.setText("Id del producto:");
-        getContentPane().add(LbIdPro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, 20));
+        getContentPane().add(LbIdPro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, 20));
+
+        BtnBuscar.setText("Buscar producto");
+        BtnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBuscarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BtnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 30, -1, -1));
+
+        LbPrecTot2.setText("                    ");
+        getContentPane().add(LbPrecTot2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, 170, -1));
+
+        LbNomPro2.setText("                    ");
+        getContentPane().add(LbNomPro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 380, -1));
+
+        LbCan12.setText("                    ");
+        getContentPane().add(LbCan12, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 380, -1));
+
+        LbPresPro2.setText("                    ");
+        getContentPane().add(LbPresPro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 380, -1));
 
         LbFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoMenu.png"))); // NOI18N
         LbFondo.setText("jLabel1");
-        getContentPane().add(LbFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 330));
+        getContentPane().add(LbFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 340));
 
         Mregresar.setText("Regresar");
         Mregresar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -128,6 +140,16 @@ public class VenPro extends javax.swing.JFrame {
 
     private void MregresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MregresarMouseClicked
         MenuExa ventanaMenu= new MenuExa();
+        ventanaMenu.estado=this.estado;
+        if(estado == 1){
+            ventanaMenu.nivel1();
+        }
+        else if (estado == 2){
+            ventanaMenu.nivel2();
+        }
+        else if (estado ==3 ){
+            ventanaMenu.nivel3();
+        }
         ventanaMenu.setVisible(true);
         ventanaMenu.setLocationRelativeTo(null);
         this.setVisible(false);
@@ -137,17 +159,48 @@ public class VenPro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TfIdFactActionPerformed
 
-    private void TfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TfNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TfNombreActionPerformed
-
     private void BtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnOkActionPerformed
-        // TODO add your handling code here:
+                         
+         
     }//GEN-LAST:event_BtnOkActionPerformed
 
     private void TfIdProd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TfIdProd1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TfIdProd1ActionPerformed
+
+    private void BtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarActionPerformed
+        HttpClient cliente = new HttpClient(new OnHttpRequestComplete() {
+            @Override
+            public void onComplete(Response status) {
+
+                // Este método se llama cuando la solicitud HTTP se completa
+                try {
+                    JSONObject producto = new JSONObject(status.getResult());
+                    String Nombre = producto.getJSONObject("0").get("Nombre").toString();
+                    String Presentacion = producto.getJSONObject("0").get("Presentacion").toString();
+                    String Precio = producto.getJSONObject("0").get("Precio").toString();
+                    String CantidadAct = producto.getJSONObject("0").get("Cantidad").toString();
+
+                    if (Nombre != null && Presentacion != null && Precio != null && CantidadAct != null) {
+                        LbNomPro2.setText(Nombre);
+                        LbPresPro2.setText(Presentacion);
+                        LbPrecTot2.setText(Precio);
+                        LbCan12.setText(CantidadAct);
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No hay en existencia el producto en la base de datos. ");
+                    }
+
+                } catch (Exception e) {
+
+                }
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+
+        String idProd = TfIdProd1.getText().toString();
+        cliente.excecute("http://localhost/Api/Exa_VenProd_Buscar.php?Id_Prod=" + idProd + "");
+    }//GEN-LAST:event_BtnBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,24 +238,24 @@ public class VenPro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnBuscar;
     private javax.swing.JButton BtnOk;
-    private javax.swing.JLabel LbAviso;
+    private javax.swing.JLabel LbCan12;
     private javax.swing.JLabel LbCant;
     private javax.swing.JLabel LbCant1;
     private javax.swing.JLabel LbFondo;
     private javax.swing.JLabel LbIdFact;
     private javax.swing.JLabel LbIdPro1;
-    private javax.swing.JLabel LbNomPro1;
+    private javax.swing.JLabel LbNomPro;
+    private javax.swing.JLabel LbNomPro2;
     private javax.swing.JLabel LbPrecTot;
+    private javax.swing.JLabel LbPrecTot2;
+    private javax.swing.JLabel LbPresPro2;
     private javax.swing.JLabel LbPresProd;
     private javax.swing.JMenu Mregresar;
     private javax.swing.JTextField TfCant;
-    private javax.swing.JTextField TfCant1;
     private javax.swing.JTextField TfIdFact;
     private javax.swing.JTextField TfIdProd1;
-    private javax.swing.JTextField TfNombre;
-    private javax.swing.JTextField TfPrecTot;
-    private javax.swing.JTextField TfPresProd;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables

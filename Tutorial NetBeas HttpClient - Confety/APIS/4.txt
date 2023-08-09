@@ -1,0 +1,22 @@
+post
+
+<?php
+include'conexion.php';
+
+$pdo=new Conexion();
+
+if($_SERVER['REQUEST_METHOD']=='POST'){
+	$sql="INSERT INTO usuario (id,nombre) VALUES(:id,:nombre)";
+	$stmt=$pdo->prepare($sql);
+	$stmt->bindValue(':id',$_POST['id']);
+	$stmt->bindValue(':nombre',$_POST['nombre']);
+	$stmt->execute();
+	$idPost=$pdo->lastInsertId();
+	if($idPost){
+		header("HTTP/1.1 200 OK");
+		echo json_decode($idPost);
+		exit;
+	}
+}
+
+?>

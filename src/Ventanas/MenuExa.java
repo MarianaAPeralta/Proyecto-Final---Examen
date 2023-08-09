@@ -3,18 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Ventanas;
+import javax.swing.JOptionPane;
 
-/**
- *
- * @author marij
- */
+
 public class MenuExa extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MenuExa
-     */
+    LoginExa Log = new LoginExa();
+    int estado;
     public MenuExa() {
         initComponents();
+        
     }
 
     /**
@@ -27,11 +25,12 @@ public class MenuExa extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem1 = new javax.swing.JMenuItem();
+        LbSaludo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         MRegProd = new javax.swing.JMenu();
         MActInv = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        MUser = new javax.swing.JMenu();
         MenuMasUser = new javax.swing.JMenu();
         MenuMenosUser = new javax.swing.JMenu();
         MVenProd = new javax.swing.JMenu();
@@ -41,6 +40,11 @@ public class MenuExa extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        LbSaludo.setFont(new java.awt.Font("Ink Free", 1, 36)); // NOI18N
+        LbSaludo.setText("¡Bienvenido!");
+        LbSaludo.setToolTipText("");
+        getContentPane().add(LbSaludo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoMenu.png"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -64,8 +68,8 @@ public class MenuExa extends javax.swing.JFrame {
         });
         jMenuBar1.add(MActInv);
 
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/User2.png"))); // NOI18N
-        jMenu2.setText("Administrar Usuarios   ");
+        MUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/User2.png"))); // NOI18N
+        MUser.setText("Administrar Usuarios   ");
 
         MenuMasUser.setText("Añadir Usuario");
         MenuMasUser.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -73,17 +77,17 @@ public class MenuExa extends javax.swing.JFrame {
                 MenuMasUserMouseClicked(evt);
             }
         });
-        jMenu2.add(MenuMasUser);
+        MUser.add(MenuMasUser);
 
-        MenuMenosUser.setText("Eliminar Usuario");
+        MenuMenosUser.setText("Buscar Usuario");
         MenuMenosUser.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 MenuMenosUserMouseClicked(evt);
             }
         });
-        jMenu2.add(MenuMenosUser);
+        MUser.add(MenuMenosUser);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(MUser);
 
         MVenProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Venta2.png"))); // NOI18N
         MVenProd.setText("Ventas de Productos   ");
@@ -113,40 +117,107 @@ public class MenuExa extends javax.swing.JFrame {
     }//GEN-LAST:event_MSalirMouseClicked
 
     private void MVenProdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MVenProdMouseClicked
-        VenPro VentanaVenPro= new VenPro();
-        VentanaVenPro.setVisible(true);
-        VentanaVenPro.setLocationRelativeTo(null);
-        this.setVisible(false);
+        if (estado == 1 || estado == 2){
+            VenPro VentanaVenPro= new VenPro();
+            VentanaVenPro.estado=this.estado;
+            VentanaVenPro.setVisible(true);
+            VentanaVenPro.setLocationRelativeTo(null);
+            this.setVisible(false);
+        }
+        else if (estado == 3){
+            JOptionPane.showMessageDialog(null, "No cuentas con los permisos necesarios \npara realizar esta acción");
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "ERR: Tipo de usuario no registrado");
+        }
     }//GEN-LAST:event_MVenProdMouseClicked
 
     private void MRegProdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MRegProdMouseClicked
-        RegPro VentanaRegPro= new RegPro();
-        VentanaRegPro.setVisible(true);
-        VentanaRegPro.setLocationRelativeTo(null);
-        this.setVisible(false);
+        if (estado == 1 || estado == 3){
+            RegPro VentanaRegPro= new RegPro();
+            VentanaRegPro.estado=this.estado;
+            VentanaRegPro.setVisible(true);
+            VentanaRegPro.setLocationRelativeTo(null);
+            this.setVisible(false);
+        }
+        else if (estado == 2){
+            JOptionPane.showMessageDialog(null, "No cuentas con los permisos necesarios \npara realizar esta acción");
+
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "ERR: Tipo de usuario no registrado");
+        }   
     }//GEN-LAST:event_MRegProdMouseClicked
 
     private void MActInvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MActInvMouseClicked
-        ActInv VentanaActInv= new ActInv();
-        VentanaActInv.setVisible(true);
-        VentanaActInv.setLocationRelativeTo(null);
-        this.setVisible(false);
+        if (estado == 1 || estado == 3){
+            ActInv VentanaActInv= new ActInv();
+            VentanaActInv.estado=this.estado;
+            VentanaActInv.setVisible(true);
+            VentanaActInv.setLocationRelativeTo(null);
+            this.setVisible(false);
+        }
+        else if (estado == 2){
+            JOptionPane.showMessageDialog(null, "No cuentas con los permisos necesarios \npara realizar esta acción");
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "ERR: Tipo de usuario no registrado");
+        }
+        
     }//GEN-LAST:event_MActInvMouseClicked
 
     private void MenuMasUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuMasUserMouseClicked
-        MasUser VentanaMasUser= new MasUser();
-        VentanaMasUser.setVisible(true);
-        VentanaMasUser.setLocationRelativeTo(null);
-        this.setVisible(false);
+        if (estado == 1){
+            MasUser VentanaMasUser= new MasUser();
+            VentanaMasUser.estado=this.estado;
+            VentanaMasUser.setVisible(true);
+            VentanaMasUser.setLocationRelativeTo(null);
+            this.setVisible(false);
+        }
+        else if (estado == 3 || estado == 2){
+            JOptionPane.showMessageDialog(null, "No cuentas con los permisos necesarios \npara realizar esta acción");
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "ERR: Tipo de usuario no registrado");
+        }
+        
     }//GEN-LAST:event_MenuMasUserMouseClicked
 
     private void MenuMenosUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuMenosUserMouseClicked
-        MenosUser VentanaMenosUser= new MenosUser();
-        VentanaMenosUser.setVisible(true);
-        VentanaMenosUser.setLocationRelativeTo(null);
-        this.setVisible(false);
+        if (estado == 1){
+            MenosUser VentanaMenosUser= new MenosUser();
+            VentanaMenosUser.estado=this.estado;
+            VentanaMenosUser.setVisible(true);
+            VentanaMenosUser.setLocationRelativeTo(null);
+            this.setVisible(false);
+        }
+        else if (estado == 3 || estado == 2){
+            JOptionPane.showMessageDialog(null, "No cuentas con los permisos necesarios \npara realizar esta acción");
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "ERR: Tipo de usuario no registrado");
+        }
     }//GEN-LAST:event_MenuMenosUserMouseClicked
-
+    
+    public void nivel1(){
+        LbSaludo.setText("¡Bienvenido!");
+    }
+    public void nivel2(){
+        LbSaludo.setText("¡Bienvenido!");
+        MRegProd.setEnabled(false);
+        MActInv.setEnabled(false);
+        MUser.setEnabled(false);
+        MenuMasUser.setEnabled(false);
+        MenuMenosUser.setEnabled(false);
+    }
+    public void nivel3(){
+        LbSaludo.setText("¡Bienvenido!");
+        MUser.setEnabled(false);
+        MenuMasUser.setEnabled(false);
+        MenuMenosUser.setEnabled(false);
+        MVenProd.setEnabled(false);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -183,14 +254,15 @@ public class MenuExa extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LbSaludo;
     private javax.swing.JMenu MActInv;
     private javax.swing.JMenu MRegProd;
     private javax.swing.JMenu MSalir;
+    private javax.swing.JMenu MUser;
     private javax.swing.JMenu MVenProd;
     private javax.swing.JMenu MenuMasUser;
     private javax.swing.JMenu MenuMenosUser;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     // End of variables declaration//GEN-END:variables

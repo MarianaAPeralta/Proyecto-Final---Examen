@@ -4,15 +4,20 @@
  */
 package Ventanas;
 
+import com.devazt.networking.HttpClient;
+import com.devazt.networking.OnHttpRequestComplete;
+import com.devazt.networking.Response;
+import javax.swing.JOptionPane;
+import org.json.JSONException;
+import org.json.JSONObject;
 /**
  *
  * @author marij
  */
 public class RegPro extends javax.swing.JFrame {
 
-    /**
-     * Creates new form RegPro
-     */
+    int estado;
+    
     public RegPro() {
         initComponents();
     }
@@ -33,11 +38,11 @@ public class RegPro extends javax.swing.JFrame {
         LbPrecio = new javax.swing.JLabel();
         BtnOk = new javax.swing.JButton();
         TfPrecio = new javax.swing.JTextField();
-        TfNombre = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        TfNomPro = new javax.swing.JTextField();
+        TfMarcaPro = new javax.swing.JTextField();
         TfPresProd = new javax.swing.JTextField();
-        LbIdPro1 = new javax.swing.JLabel();
-        TfIdProd1 = new javax.swing.JTextField();
+        LbIdProd = new javax.swing.JLabel();
+        TfIdProd = new javax.swing.JTextField();
         LbFondo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         Mregresa = new javax.swing.JMenu();
@@ -69,24 +74,24 @@ public class RegPro extends javax.swing.JFrame {
         getContentPane().add(BtnOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 300, -1, -1));
         getContentPane().add(TfPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 410, -1));
 
-        TfNombre.addActionListener(new java.awt.event.ActionListener() {
+        TfNomPro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TfNombreActionPerformed(evt);
+                TfNomProActionPerformed(evt);
             }
         });
-        getContentPane().add(TfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 410, -1));
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 410, -1));
+        getContentPane().add(TfNomPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 410, -1));
+        getContentPane().add(TfMarcaPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 410, -1));
         getContentPane().add(TfPresProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 410, -1));
 
-        LbIdPro1.setText("Id del producto:");
-        getContentPane().add(LbIdPro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, 20));
+        LbIdProd.setText("Id del producto:");
+        getContentPane().add(LbIdProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
 
-        TfIdProd1.addActionListener(new java.awt.event.ActionListener() {
+        TfIdProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TfIdProd1ActionPerformed(evt);
+                TfIdProdActionPerformed(evt);
             }
         });
-        getContentPane().add(TfIdProd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 410, 20));
+        getContentPane().add(TfIdProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 410, -1));
 
         LbFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoMenu.png"))); // NOI18N
         LbFondo.setText("jLabel1");
@@ -107,22 +112,52 @@ public class RegPro extends javax.swing.JFrame {
 
     private void MregresaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MregresaMouseClicked
         MenuExa ventanaMenu= new MenuExa();
+        ventanaMenu.estado=this.estado;
+        if(estado == 1){
+            ventanaMenu.nivel1();
+        }
+        else if (estado == 2){
+            ventanaMenu.nivel2();
+        }
+        else if (estado ==3 ){
+            ventanaMenu.nivel3();
+        }
         ventanaMenu.setVisible(true);
         ventanaMenu.setLocationRelativeTo(null);
         this.setVisible(false);
     }//GEN-LAST:event_MregresaMouseClicked
 
-    private void TfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TfNombreActionPerformed
+    private void TfNomProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TfNomProActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TfNombreActionPerformed
+    }//GEN-LAST:event_TfNomProActionPerformed
 
     private void BtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnOkActionPerformed
-        // TODO add your handling code here:
+       HttpClient cliente = new HttpClient(new OnHttpRequestComplete() {
+            @Override
+            public void onComplete(Response status) {
+                
+                if (status.isSuccess()) {
+                    JOptionPane.showMessageDialog(null, "Se Registro correctamente  el producto en la Base de datos.");
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se puede registrar el producto en la base de datos. ");
+                }
+
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+        
+        String Id_Prod = TfIdProd.getText().toString();
+        String Nombre = TfNomPro.getText().toString();
+        String Marca = TfMarcaPro.getText().toString();
+        String Presentacion = TfPresProd.getText().toString();
+        String Precio = TfPrecio.getText().toString();
+
+        cliente.excecute("http://localhost/Api/Exa_RegProd.php?Id_Prod=" + Id_Prod + "&Nombre="+Nombre+"&Marca="+Marca+"&Presentacion="+Presentacion+"&Precio="+Precio+"");
     }//GEN-LAST:event_BtnOkActionPerformed
 
-    private void TfIdProd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TfIdProd1ActionPerformed
+    private void TfIdProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TfIdProdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TfIdProd1ActionPerformed
+    }//GEN-LAST:event_TfIdProdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,18 +197,18 @@ public class RegPro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnOk;
     private javax.swing.JLabel LbFondo;
-    private javax.swing.JLabel LbIdPro1;
+    private javax.swing.JLabel LbIdProd;
     private javax.swing.JLabel LbMarcaPro;
     private javax.swing.JLabel LbNomPro;
     private javax.swing.JLabel LbPrecio;
     private javax.swing.JLabel LbPresProd;
     private javax.swing.JMenu Mregresa;
-    private javax.swing.JTextField TfIdProd1;
-    private javax.swing.JTextField TfNombre;
+    private javax.swing.JTextField TfIdProd;
+    private javax.swing.JTextField TfMarcaPro;
+    private javax.swing.JTextField TfNomPro;
     private javax.swing.JTextField TfPrecio;
     private javax.swing.JTextField TfPresProd;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }

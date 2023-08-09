@@ -4,15 +4,20 @@
  */
 package Ventanas;
 
+import com.devazt.networking.HttpClient;
+import com.devazt.networking.OnHttpRequestComplete;
+import com.devazt.networking.Response;
+import javax.swing.JOptionPane;
+import org.json.JSONException;
+import org.json.JSONObject;
 /**
  *
  * @author marij
  */
 public class MasUser extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MasUser
-     */
+    int estado;
+    
     public MasUser() {
         initComponents();
     }
@@ -48,7 +53,7 @@ public class MasUser extends javax.swing.JFrame {
                 BtnOkActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, -1, -1));
+        getContentPane().add(BtnOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, -1, -1));
 
         LbId.setText("Id de Usuario:");
         getContentPane().add(LbId, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
@@ -70,7 +75,7 @@ public class MasUser extends javax.swing.JFrame {
 
         LbNivel.setText("Nivel del permiso del usuario:");
         getContentPane().add(LbNivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
-        getContentPane().add(TfNivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 370, -1));
+        getContentPane().add(TfNivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 270, -1));
 
         LbMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoMenu.png"))); // NOI18N
         getContentPane().add(LbMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 620, 310));
@@ -89,7 +94,26 @@ public class MasUser extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnOkActionPerformed
-        // TODO add your handling code here:
+        HttpClient cliente = new HttpClient(new OnHttpRequestComplete() {
+            @Override
+            public void onComplete(Response status) {
+                // Este método se llama cuando la solicitud HTTP se completa
+                if (status.isSuccess()) {
+                    JOptionPane.showMessageDialog(null, "Éxito, se guardó correctamente en la Base de datos.");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error al guardar en la Base de datos. ");
+                }
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+        
+        
+        String Id_User = TfId.getText().toString();
+        String NameUser = TfNombre.getText().toString();
+        String Password = TfPassword.getText().toString();
+        String nivel = TfNivel.getText().toString();
+
+        cliente.excecute("http://localhost/Api/Exa_MasUser.php?Id_User="+Id_User+"&NameUser="+NameUser+"&Contraseña="+Password+"&estado="+nivel+"");
     }//GEN-LAST:event_BtnOkActionPerformed
 
     private void TfIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TfIdActionPerformed
@@ -98,6 +122,16 @@ public class MasUser extends javax.swing.JFrame {
 
     private void BtnRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnRegresarMouseClicked
         MenuExa ventanaMenu= new MenuExa();
+        ventanaMenu.estado=this.estado;
+        if(estado == 1){
+            ventanaMenu.nivel1();
+        }
+        else if (estado == 2){
+            ventanaMenu.nivel2();
+        }
+        else if (estado ==3 ){
+            ventanaMenu.nivel3();
+        }
         ventanaMenu.setVisible(true);
         ventanaMenu.setLocationRelativeTo(null);
         this.setVisible(false);

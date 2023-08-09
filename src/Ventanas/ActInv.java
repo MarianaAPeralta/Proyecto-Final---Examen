@@ -4,15 +4,21 @@
  */
 package Ventanas;
 
+import com.devazt.networking.HttpClient;
+import com.devazt.networking.OnHttpRequestComplete;
+import com.devazt.networking.Response;
+import javax.swing.JOptionPane;
+import org.json.JSONException;
+import org.json.JSONObject;
 /**
  *
  * @author marij
  */
 public class ActInv extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ActInv
-     */
+    int estado;
+    String Nombre, Cantidad;
+    
     public ActInv() {
         initComponents();
     }
@@ -27,14 +33,17 @@ public class ActInv extends javax.swing.JFrame {
     private void initComponents() {
 
         BtnOk = new javax.swing.JButton();
-        LbCant = new javax.swing.JLabel();
         TfCant = new javax.swing.JTextField();
+        LbCant = new javax.swing.JLabel();
         TfIdProd = new javax.swing.JTextField();
         LbNomPro = new javax.swing.JLabel();
+        LbNombre = new javax.swing.JLabel();
+        LbCantidad = new javax.swing.JLabel();
+        TfNombre = new javax.swing.JTextField();
+        TfCantidad = new javax.swing.JTextField();
         LbAviso = new javax.swing.JLabel();
+        BtnBuscar = new javax.swing.JButton();
         LbFondo = new javax.swing.JLabel();
-        LbFechaComp1 = new javax.swing.JLabel();
-        TfFecha1 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         Mregresar = new javax.swing.JMenu();
 
@@ -47,32 +56,50 @@ public class ActInv extends javax.swing.JFrame {
                 BtnOkActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 290, -1, -1));
+        getContentPane().add(BtnOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 190, -1, -1));
+        getContentPane().add(TfCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 210, -1));
 
-        LbCant.setText("Cantidad del producto:");
-        getContentPane().add(LbCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
-        getContentPane().add(TfCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 410, -1));
+        LbCant.setText("Cantidad a ingresar del producto:");
+        getContentPane().add(LbCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, 20));
 
         TfIdProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TfIdProdActionPerformed(evt);
             }
         });
-        getContentPane().add(TfIdProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 410, -1));
+        getContentPane().add(TfIdProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 210, -1));
 
         LbNomPro.setText("Id del producto:");
         getContentPane().add(LbNomPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
 
-        LbAviso.setText("Debe de registrar el producto primero.");
-        getContentPane().add(LbAviso, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, -1, -1));
+        LbNombre.setText("Nombre del producto:");
+        getContentPane().add(LbNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
+
+        LbCantidad.setText("Cantidad actual del producto:");
+        getContentPane().add(LbCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
+
+        TfNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TfNombreActionPerformed(evt);
+            }
+        });
+        getContentPane().add(TfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 300, -1));
+        getContentPane().add(TfCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 300, -1));
+
+        LbAviso.setText("Datos del producto");
+        getContentPane().add(LbAviso, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, -1, -1));
+
+        BtnBuscar.setText("Buscar Producto");
+        BtnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBuscarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BtnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, -1, -1));
 
         LbFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoMenu.png"))); // NOI18N
         LbFondo.setText("jLabel1");
         getContentPane().add(LbFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 340));
-
-        LbFechaComp1.setText("Fecha de compra:");
-        getContentPane().add(LbFechaComp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
-        getContentPane().add(TfFecha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 410, -1));
 
         Mregresar.setText("Regresar");
         Mregresar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -89,6 +116,16 @@ public class ActInv extends javax.swing.JFrame {
 
     private void MregresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MregresarMouseClicked
         MenuExa ventanaMenu= new MenuExa();
+        ventanaMenu.estado=this.estado;
+        if(estado == 1){
+            ventanaMenu.nivel1();
+        }
+        else if (estado == 2){
+            ventanaMenu.nivel2();
+        }
+        else if (estado ==3 ){
+            ventanaMenu.nivel3();
+        }
         ventanaMenu.setVisible(true);
         ventanaMenu.setLocationRelativeTo(null);
         this.setVisible(false);
@@ -99,8 +136,55 @@ public class ActInv extends javax.swing.JFrame {
     }//GEN-LAST:event_TfIdProdActionPerformed
 
     private void BtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnOkActionPerformed
-        // TODO add your handling code here:
+        HttpClient cliente = new HttpClient(new OnHttpRequestComplete() {
+            @Override
+            public void onComplete(Response status) {
+                // Este método se llama cuando la solicitud HTTP se completa
+                if (status.isSuccess()) {
+                    JOptionPane.showMessageDialog(null, "Éxito, se guardó correctamente en la Base de datos.");
+                    
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error al guardar en la Base de datos. ");
+                }
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+
+        String IdProd = TfIdProd.getText().toString();
+        String Cantidad = TfCant.getText().toString();
+
+        cliente.excecute("http://localhost/Api/Exa_ActInv_Actu.php?Id_Prod=" + IdProd + "&Cantidad=" + Cantidad + "");
     }//GEN-LAST:event_BtnOkActionPerformed
+
+    private void TfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TfNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TfNombreActionPerformed
+
+    private void BtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarActionPerformed
+        HttpClient cliente = new HttpClient(new OnHttpRequestComplete() {
+            @Override
+            public void onComplete(Response status) {
+
+                try {
+                    JSONObject producto = new JSONObject(status.getResult());
+                    String nombreWeb = producto.getJSONObject("0").get("Nombre").toString();
+                    String cantidadWeb = producto.getJSONObject("0").get("Cantidad").toString();
+                    if (nombreWeb != null && cantidadWeb != null) {
+                        TfNombre.setText(nombreWeb);
+                        TfCantidad.setText(cantidadWeb);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No hay en existencia el producto en la base de datos. ");
+                    }
+
+                } catch (Exception e) {
+                }
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+
+        String IdProd = TfIdProd.getText().toString();
+        cliente.excecute("http://localhost/Api/Exa_ActInv_Buscar.php?Id_Prod=" + IdProd + "");
+    }//GEN-LAST:event_BtnBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -138,16 +222,19 @@ public class ActInv extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnBuscar;
     private javax.swing.JButton BtnOk;
     private javax.swing.JLabel LbAviso;
     private javax.swing.JLabel LbCant;
-    private javax.swing.JLabel LbFechaComp1;
+    private javax.swing.JLabel LbCantidad;
     private javax.swing.JLabel LbFondo;
     private javax.swing.JLabel LbNomPro;
+    private javax.swing.JLabel LbNombre;
     private javax.swing.JMenu Mregresar;
     private javax.swing.JTextField TfCant;
-    private javax.swing.JTextField TfFecha1;
+    private javax.swing.JTextField TfCantidad;
     private javax.swing.JTextField TfIdProd;
+    private javax.swing.JTextField TfNombre;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }
