@@ -1,6 +1,0 @@
-
-2.- Cajero Solo hacer ventas y buscar algun producto
-3.- Actualizar Producto y meter produtos
-4.- Administrador TODO!!
-
-Hacer Login, Poner todas Formas.
