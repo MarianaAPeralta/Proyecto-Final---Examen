@@ -45,21 +45,31 @@ public class MenosUser extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        LbId.setText("Id del usuario a buscar");
-        getContentPane().add(LbId, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, -1, -1));
-        getContentPane().add(TfId, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 240, -1));
+        LbId.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LbId.setForeground(new java.awt.Color(255, 255, 255));
+        LbId.setText("Id del usuario a buscar:");
+        getContentPane().add(LbId, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
+        getContentPane().add(TfId, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 130, -1));
 
+        LbNombre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LbNombre.setForeground(new java.awt.Color(255, 255, 255));
         LbNombre.setText("Nombre del usuario:");
-        getContentPane().add(LbNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, -1, -1));
+        getContentPane().add(LbNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, -1, -1));
 
+        LbNivel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LbNivel.setForeground(new java.awt.Color(255, 255, 255));
         LbNivel.setText("Nivel del usuario:");
-        getContentPane().add(LbNivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, -1, -1));
+        getContentPane().add(LbNivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
 
+        LbNomEli.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LbNomEli.setForeground(new java.awt.Color(255, 255, 255));
         LbNomEli.setText("                      ");
-        getContentPane().add(LbNomEli, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 260, -1));
+        getContentPane().add(LbNomEli, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 150, -1));
 
+        LbNivelEli.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LbNivelEli.setForeground(new java.awt.Color(255, 255, 255));
         LbNivelEli.setText("                                                  ");
-        getContentPane().add(LbNivelEli, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, -1, -1));
+        getContentPane().add(LbNivelEli, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, -1, -1));
 
         BtnBuscar.setText("Buscar usuario");
         BtnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -67,10 +77,10 @@ public class MenosUser extends javax.swing.JFrame {
                 BtnBuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, -1, -1));
+        getContentPane().add(BtnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, -1, -1));
 
-        LbMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoMenu.png"))); // NOI18N
-        getContentPane().add(LbMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 570, 280));
+        LbMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NBlMicons/FondoProcCh.png"))); // NOI18N
+        getContentPane().add(LbMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 310));
 
         BtnRegresar.setText("Regresar");
         BtnRegresar.addMouseListener(new java.awt.event.MouseAdapter() {

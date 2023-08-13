@@ -44,13 +44,13 @@ public class MenuExa extends javax.swing.JFrame {
         LbSaludo.setFont(new java.awt.Font("Ink Free", 1, 36)); // NOI18N
         LbSaludo.setText("¡Bienvenido!");
         LbSaludo.setToolTipText("");
-        getContentPane().add(LbSaludo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, -1, -1));
+        getContentPane().add(LbSaludo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoMenu.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NBlMicons/FondoMenu.png"))); // NOI18N
         jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 390));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, -10, 940, 400));
 
-        MRegProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Añadir2.png"))); // NOI18N
+        MRegProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NBlMicons/Añadir2.png"))); // NOI18N
         MRegProd.setText("Registro de Producto");
         MRegProd.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -59,7 +59,7 @@ public class MenuExa extends javax.swing.JFrame {
         });
         jMenuBar1.add(MRegProd);
 
-        MActInv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Reload2.png"))); // NOI18N
+        MActInv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NBlMicons/Reload2.png"))); // NOI18N
         MActInv.setText("Actualizacion de Inventario   ");
         MActInv.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -68,7 +68,7 @@ public class MenuExa extends javax.swing.JFrame {
         });
         jMenuBar1.add(MActInv);
 
-        MUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/User2.png"))); // NOI18N
+        MUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NBlMicons/User2.png"))); // NOI18N
         MUser.setText("Administrar Usuarios   ");
 
         MenuMasUser.setText("Añadir Usuario");
@@ -89,7 +89,7 @@ public class MenuExa extends javax.swing.JFrame {
 
         jMenuBar1.add(MUser);
 
-        MVenProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Venta2.png"))); // NOI18N
+        MVenProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NBlMicons/Venta2.png"))); // NOI18N
         MVenProd.setText("Ventas de Productos   ");
         MVenProd.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -98,7 +98,7 @@ public class MenuExa extends javax.swing.JFrame {
         });
         jMenuBar1.add(MVenProd);
 
-        MSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
+        MSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NBlMicons/Salir.png"))); // NOI18N
         MSalir.setText("Salir");
         MSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

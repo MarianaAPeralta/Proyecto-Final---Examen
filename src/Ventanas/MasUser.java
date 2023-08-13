@@ -53,32 +53,40 @@ public class MasUser extends javax.swing.JFrame {
                 BtnOkActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, -1, -1));
+        getContentPane().add(BtnOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, -1, -1));
 
+        LbId.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LbId.setForeground(new java.awt.Color(255, 255, 255));
         LbId.setText("Id de Usuario:");
-        getContentPane().add(LbId, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
+        getContentPane().add(LbId, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, -1, -1));
 
+        LbNombre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LbNombre.setForeground(new java.awt.Color(255, 255, 255));
         LbNombre.setText("Nombre del nuevo usuario:");
-        getContentPane().add(LbNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
+        getContentPane().add(LbNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
 
+        LbPassword.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LbPassword.setForeground(new java.awt.Color(255, 255, 255));
         LbPassword.setText("Contraseña del nuevo usuario:");
-        getContentPane().add(LbPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
+        getContentPane().add(LbPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
 
         TfId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TfIdActionPerformed(evt);
             }
         });
-        getContentPane().add(TfId, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 140, -1));
-        getContentPane().add(TfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 390, -1));
-        getContentPane().add(TfPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 370, -1));
+        getContentPane().add(TfId, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 50, 120, -1));
+        getContentPane().add(TfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 370, -1));
+        getContentPane().add(TfPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 370, -1));
 
+        LbNivel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LbNivel.setForeground(new java.awt.Color(255, 255, 255));
         LbNivel.setText("Nivel del permiso del usuario:");
-        getContentPane().add(LbNivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
-        getContentPane().add(TfNivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 270, -1));
+        getContentPane().add(LbNivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
+        getContentPane().add(TfNivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, 270, -1));
 
-        LbMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoMenu.png"))); // NOI18N
-        getContentPane().add(LbMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 620, 310));
+        LbMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NBlMicons/FondoActInv_1.png"))); // NOI18N
+        getContentPane().add(LbMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 310));
 
         BtnRegresar.setText("Regresar");
         BtnRegresar.addMouseListener(new java.awt.event.MouseAdapter() {

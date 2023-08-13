@@ -56,38 +56,48 @@ public class ActInv extends javax.swing.JFrame {
                 BtnOkActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 190, -1, -1));
-        getContentPane().add(TfCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 210, -1));
+        getContentPane().add(BtnOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 240, -1, -1));
+        getContentPane().add(TfCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 270, -1));
 
+        LbCant.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LbCant.setForeground(new java.awt.Color(255, 255, 255));
         LbCant.setText("Cantidad a ingresar del producto:");
-        getContentPane().add(LbCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, 20));
+        getContentPane().add(LbCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, 20));
 
         TfIdProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TfIdProdActionPerformed(evt);
             }
         });
-        getContentPane().add(TfIdProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 210, -1));
+        getContentPane().add(TfIdProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 30, 100, -1));
 
+        LbNomPro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LbNomPro.setForeground(new java.awt.Color(255, 255, 255));
         LbNomPro.setText("Id del producto:");
-        getContentPane().add(LbNomPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
+        getContentPane().add(LbNomPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, -1, -1));
 
+        LbNombre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LbNombre.setForeground(new java.awt.Color(255, 255, 255));
         LbNombre.setText("Nombre del producto:");
-        getContentPane().add(LbNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
+        getContentPane().add(LbNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
 
+        LbCantidad.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LbCantidad.setForeground(new java.awt.Color(255, 255, 255));
         LbCantidad.setText("Cantidad actual del producto:");
-        getContentPane().add(LbCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
+        getContentPane().add(LbCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
 
         TfNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TfNombreActionPerformed(evt);
             }
         });
-        getContentPane().add(TfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 300, -1));
-        getContentPane().add(TfCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 300, -1));
+        getContentPane().add(TfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 360, -1));
+        getContentPane().add(TfCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 360, -1));
 
+        LbAviso.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LbAviso.setForeground(new java.awt.Color(255, 255, 255));
         LbAviso.setText("Datos del producto");
-        getContentPane().add(LbAviso, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, -1, -1));
+        getContentPane().add(LbAviso, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, -1, -1));
 
         BtnBuscar.setText("Buscar Producto");
         BtnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -95,11 +105,12 @@ public class ActInv extends javax.swing.JFrame {
                 BtnBuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, -1, -1));
+        getContentPane().add(BtnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, -1, -1));
 
-        LbFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoMenu.png"))); // NOI18N
-        LbFondo.setText("jLabel1");
-        getContentPane().add(LbFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 340));
+        LbFondo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LbFondo.setForeground(new java.awt.Color(255, 255, 255));
+        LbFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NBlMicons/FondoActInv_1.png"))); // NOI18N
+        getContentPane().add(LbFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 310));
 
         Mregresar.setText("Regresar");
         Mregresar.addMouseListener(new java.awt.event.MouseAdapter() {

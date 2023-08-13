@@ -63,43 +63,57 @@ public class VenPro extends javax.swing.JFrame {
                 BtnOkActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 260, -1, -1));
+        getContentPane().add(BtnOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 250, -1, -1));
 
         TfIdFact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TfIdFactActionPerformed(evt);
             }
         });
-        getContentPane().add(TfIdFact, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, 160, -1));
+        getContentPane().add(TfIdFact, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 160, -1));
 
+        LbIdFact.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LbIdFact.setForeground(new java.awt.Color(255, 255, 255));
         LbIdFact.setText("Numero de la factura:");
-        getContentPane().add(LbIdFact, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, -1, -1));
+        getContentPane().add(LbIdFact, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, -1, -1));
 
+        LbNomPro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LbNomPro.setForeground(new java.awt.Color(255, 255, 255));
         LbNomPro.setText("Nombre del producto:");
-        getContentPane().add(LbNomPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, -1, -1));
+        getContentPane().add(LbNomPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
 
+        LbPresProd.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LbPresProd.setForeground(new java.awt.Color(255, 255, 255));
         LbPresProd.setText("Presentacion del producto:");
-        getContentPane().add(LbPresProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, -1));
-        getContentPane().add(TfCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 130, -1));
+        getContentPane().add(LbPresProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+        getContentPane().add(TfCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 130, -1));
 
+        LbCant.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LbCant.setForeground(new java.awt.Color(255, 255, 255));
         LbCant.setText("Cantidad a comprar:");
-        getContentPane().add(LbCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, -1));
+        getContentPane().add(LbCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
 
+        LbPrecTot.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LbPrecTot.setForeground(new java.awt.Color(255, 255, 255));
         LbPrecTot.setText("Total a pagar:");
-        getContentPane().add(LbPrecTot, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, -1, 20));
+        getContentPane().add(LbPrecTot, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, -1, 20));
 
+        LbCant1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LbCant1.setForeground(new java.awt.Color(255, 255, 255));
         LbCant1.setText("Cantidad actual del producto:");
-        getContentPane().add(LbCant1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
+        getContentPane().add(LbCant1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
 
         TfIdProd1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TfIdProd1ActionPerformed(evt);
             }
         });
-        getContentPane().add(TfIdProd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, 250, -1));
+        getContentPane().add(TfIdProd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 20, 100, -1));
 
+        LbIdPro1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LbIdPro1.setForeground(new java.awt.Color(255, 255, 255));
         LbIdPro1.setText("Id del producto:");
-        getContentPane().add(LbIdPro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, 20));
+        getContentPane().add(LbIdPro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, -1, 20));
 
         BtnBuscar.setText("Buscar producto");
         BtnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -107,23 +121,30 @@ public class VenPro extends javax.swing.JFrame {
                 BtnBuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 30, -1, -1));
+        getContentPane().add(BtnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, -1, -1));
 
+        LbPrecTot2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LbPrecTot2.setForeground(new java.awt.Color(255, 255, 255));
         LbPrecTot2.setText("                    ");
-        getContentPane().add(LbPrecTot2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, 170, -1));
+        getContentPane().add(LbPrecTot2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, 170, -1));
 
+        LbNomPro2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LbNomPro2.setForeground(new java.awt.Color(255, 255, 255));
         LbNomPro2.setText("                    ");
-        getContentPane().add(LbNomPro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 380, -1));
+        getContentPane().add(LbNomPro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 380, -1));
 
+        LbCan12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LbCan12.setForeground(new java.awt.Color(255, 255, 255));
         LbCan12.setText("                    ");
-        getContentPane().add(LbCan12, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 380, -1));
+        getContentPane().add(LbCan12, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 380, -1));
 
+        LbPresPro2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LbPresPro2.setForeground(new java.awt.Color(255, 255, 255));
         LbPresPro2.setText("                    ");
-        getContentPane().add(LbPresPro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 380, -1));
+        getContentPane().add(LbPresPro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 380, -1));
 
-        LbFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoMenu.png"))); // NOI18N
-        LbFondo.setText("jLabel1");
-        getContentPane().add(LbFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 340));
+        LbFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NBlMicons/FondoProcMd.png"))); // NOI18N
+        getContentPane().add(LbFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 500));
 
         Mregresar.setText("Regresar");
         Mregresar.addMouseListener(new java.awt.event.MouseAdapter() {

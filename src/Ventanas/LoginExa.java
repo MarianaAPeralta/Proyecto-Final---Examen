@@ -20,8 +20,8 @@ public class LoginExa extends javax.swing.JFrame {
 
     String NameUser, Contraseña, estado;
     boolean SiEntrar=false;
-    Icon EntrarAlter = new ImageIcon("C:\\Users\\marij\\OneDrive\\Documentos\\NetBeansProjects\\LoginExam\\Iconos\\EntrarAlter.png");
-    Icon Entrar = new ImageIcon("C:\\Users\\marij\\OneDrive\\Documentos\\NetBeansProjects\\LoginExam\\Iconos\\Entrar.png");
+    Icon EntrarAlter = new ImageIcon("C:\\Users\\marij\\OneDrive\\Documentos\\NetBeansProjects\\LoginExam\\src\\NBlMicons\\EntrarAlter.png");
+    Icon Entrar = new ImageIcon("C:\\Users\\marij\\OneDrive\\Documentos\\NetBeansProjects\\LoginExam\\src\\NBlMicons\\Entrar.png");
 
     public LoginExa() {
         initComponents();
@@ -49,30 +49,36 @@ public class LoginExa extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        LbUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/User.png"))); // NOI18N
-        getContentPane().add(LbUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, -1, -1));
+        LbUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NBlMicons/User.png"))); // NOI18N
+        getContentPane().add(LbUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, -1, -1));
 
+        TfUser.setBackground(new java.awt.Color(0, 0, 0));
+        TfUser.setForeground(new java.awt.Color(255, 255, 255));
         TfUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TfUserActionPerformed(evt);
             }
         });
-        getContentPane().add(TfUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 170, -1));
+        getContentPane().add(TfUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 370, 170, -1));
 
+        TfPassword.setBackground(new java.awt.Color(0, 0, 0));
+        TfPassword.setForeground(new java.awt.Color(255, 255, 255));
         TfPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TfPasswordActionPerformed(evt);
             }
         });
-        getContentPane().add(TfPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 170, -1));
+        getContentPane().add(TfPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 410, 170, -1));
 
+        LbContraseña.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         LbContraseña.setText("Contraseña:");
-        getContentPane().add(LbContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, -1, -1));
+        getContentPane().add(LbContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, -1, -1));
 
+        LbNombre.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         LbNombre.setText("Nombre: ");
-        getContentPane().add(LbNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, -1, -1));
+        getContentPane().add(LbNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, -1, -1));
 
-        LbEnter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Entrar.png"))); // NOI18N
+        LbEnter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NBlMicons/Entrar.png"))); // NOI18N
         LbEnter.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 LbEnterMouseClicked(evt);
@@ -89,7 +95,7 @@ public class LoginExa extends javax.swing.JFrame {
         LbAviso.setText("Entrar");
         getContentPane().add(LbAviso, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 660, -1, -1));
 
-        LbFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoLogin.png"))); // NOI18N
+        LbFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NBlMicons/FondoLogin.png"))); // NOI18N
         getContentPane().add(LbFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, -1));
 
         pack();
@@ -113,14 +119,16 @@ public class LoginExa extends javax.swing.JFrame {
                         JSONObject Usuarios = new JSONObject(status.getResult());
                         String UserWeb=Usuarios.getJSONObject("0").get("NameUser").toString();
                         String ContraseñaWeb=Usuarios.getJSONObject("0").get("Contraseña").toString();
+                        
                         if(TfUser.getText().toString().equals(UserWeb) &&
-                                TfPassword.getText().toString().equals(ContraseñaWeb)){
+                            TfPassword.getText().toString().equals(ContraseñaWeb)){
                             estado=Usuarios.getJSONObject("0").get("estado").toString();
                             LbAviso.setText("Entrando..");   
                             SiEntrar=true;
                         }
                     }
-                        catch(JSONException e){
+                    catch(JSONException e){
+                        e.printStackTrace();
                     }
                     
                 }
@@ -131,7 +139,7 @@ public class LoginExa extends javax.swing.JFrame {
         NameUser=TfUser.getText().toString();
         Contraseña=TfPassword.getText().toString();
         
-        Cliente.excecute("http://localhost/Api/login.php?NameUser="+ NameUser+"&Contraseña="+Contraseña+"");
+        Cliente.excecute("http://localhost/Api/login.php?NameUser="+NameUser+"&Contraseña="+Contraseña+"");
         
         if (SiEntrar==true){
             MenuExa ventanaMenu= new MenuExa();
@@ -154,6 +162,11 @@ public class LoginExa extends javax.swing.JFrame {
             else{
                 JOptionPane.showMessageDialog(null, "Usuario no encontrado");
             }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Ingresa un usuario valido");
+            TfUser.setText("");
+            TfPassword.setText("");
         }
         
         

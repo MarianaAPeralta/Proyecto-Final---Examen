@@ -53,17 +53,25 @@ public class RegPro extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        LbMarcaPro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LbMarcaPro.setForeground(new java.awt.Color(255, 255, 255));
         LbMarcaPro.setText("Marca del producto:");
-        getContentPane().add(LbMarcaPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
+        getContentPane().add(LbMarcaPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
 
+        LbNomPro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LbNomPro.setForeground(new java.awt.Color(255, 255, 255));
         LbNomPro.setText("Nombre del producto:");
-        getContentPane().add(LbNomPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
+        getContentPane().add(LbNomPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
 
+        LbPresProd.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LbPresProd.setForeground(new java.awt.Color(255, 255, 255));
         LbPresProd.setText("Presentacion del producto:");
-        getContentPane().add(LbPresProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
+        getContentPane().add(LbPresProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, -1));
 
+        LbPrecio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LbPrecio.setForeground(new java.awt.Color(255, 255, 255));
         LbPrecio.setText("Precio del producto:");
-        getContentPane().add(LbPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, -1, -1));
+        getContentPane().add(LbPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, -1, -1));
 
         BtnOk.setText("Aceptar");
         BtnOk.addActionListener(new java.awt.event.ActionListener() {
@@ -71,31 +79,32 @@ public class RegPro extends javax.swing.JFrame {
                 BtnOkActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 300, -1, -1));
-        getContentPane().add(TfPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 410, -1));
+        getContentPane().add(BtnOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, -1, -1));
+        getContentPane().add(TfPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 190, -1));
 
         TfNomPro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TfNomProActionPerformed(evt);
             }
         });
-        getContentPane().add(TfNomPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 410, -1));
-        getContentPane().add(TfMarcaPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 410, -1));
-        getContentPane().add(TfPresProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 410, -1));
+        getContentPane().add(TfNomPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 190, -1));
+        getContentPane().add(TfMarcaPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 190, -1));
+        getContentPane().add(TfPresProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 190, -1));
 
+        LbIdProd.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LbIdProd.setForeground(new java.awt.Color(255, 255, 255));
         LbIdProd.setText("Id del producto:");
-        getContentPane().add(LbIdProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
+        getContentPane().add(LbIdProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
 
         TfIdProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TfIdProdActionPerformed(evt);
             }
         });
-        getContentPane().add(TfIdProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 410, -1));
+        getContentPane().add(TfIdProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 190, -1));
 
-        LbFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoMenu.png"))); // NOI18N
-        LbFondo.setText("jLabel1");
-        getContentPane().add(LbFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 340));
+        LbFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NBlMicons/FondoRegProd.png"))); // NOI18N
+        getContentPane().add(LbFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 420));
 
         Mregresa.setText("Regresar");
         Mregresa.addMouseListener(new java.awt.event.MouseAdapter() {
