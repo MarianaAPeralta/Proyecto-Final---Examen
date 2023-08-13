@@ -12,7 +12,7 @@
         <Menu class="javax.swing.JMenu" name="MRegProd">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/A&#xf1;adir2.png"/>
+              <Image iconType="3" name="/NBlMicons/A&#xf1;adir2.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Registro de Producto"/>
           </Properties>
@@ -23,7 +23,7 @@
         <Menu class="javax.swing.JMenu" name="MActInv">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/Reload2.png"/>
+              <Image iconType="3" name="/NBlMicons/Reload2.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Actualizacion de Inventario   "/>
           </Properties>
@@ -34,7 +34,7 @@
         <Menu class="javax.swing.JMenu" name="MUser">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/User2.png"/>
+              <Image iconType="3" name="/NBlMicons/User2.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Administrar Usuarios   "/>
           </Properties>
@@ -60,7 +60,7 @@
         <Menu class="javax.swing.JMenu" name="MVenProd">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/Venta2.png"/>
+              <Image iconType="3" name="/NBlMicons/Venta2.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Ventas de Productos   "/>
           </Properties>
@@ -71,7 +71,7 @@
         <Menu class="javax.swing.JMenu" name="MSalir">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/Salir.png"/>
+              <Image iconType="3" name="/NBlMicons/Salir.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Salir"/>
           </Properties>
@@ -117,20 +117,20 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="310" y="140" width="-1" height="-1"/>
+          <AbsoluteConstraints x="310" y="60" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Imagenes/FondoMenu.png"/>
+          <Image iconType="3" name="/NBlMicons/FondoMenu.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="jLabel1"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="0" y="0" width="920" height="390"/>
+          <AbsoluteConstraints x="-100" y="-10" width="940" height="400"/>
         </Constraint>
       </Constraints>
     </Component>
